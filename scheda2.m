@@ -43,3 +43,21 @@ A([2 3 3]) % stampa gli elementi di riga 2 e 3 della colonna 1, da evitare crea 
 A(3,2) = A(1,1); % copia il valore di A(1,1) in A(3,2)
 A(1:2,4) = zeros (2,1) % imposta il valore 0 nelle celle di riga 1 e 2 di colonna 4
 A(2,:) = A(2,:) - A(2,1) / A(1,1) * A(1,:) % imposta un nuovo valore per tutta la riga 2
+
+
+% Es. 7 
+clear 
+clc
+
+dim = 8;
+
+X = ones(1,dim);
+Y = (1:dim);
+
+A = X.*Y';
+
+S = triu(A);
+I = tril(A);
+
+Z = zero(8,1);
+% da terminare
