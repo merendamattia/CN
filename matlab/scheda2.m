@@ -62,6 +62,30 @@ I = tril(A);
 Z = zero(8,1);
 % da terminare
 
+% ------------------------------------------
 
+% Es. 8
+% file es_8.m
+function [sol, controllo, errore] = es_8(a);
 
+    p = (10.^a)';
+    b = (1 + p.^2)./p; % se a molto grande -> b tende a p
+    
+    t_pos = (b + sqrt(b.^2 - 4)) / 2;
+    t_neg = (b - sqrt(b.^2 - 4)) / 2; % quindi b^2 è circa p^2
+    
+    sol = [-sqrt(t_pos) sqrt(t_pos) -sqrt(t_neg) sqrt(t_neg)];
+    controllo = [-sqrt(p) sqrt(p) -sqrt(1/p) sqrt(1/p)];
+    errore = abs( abs( sol - controllo ) ./ controllo );
+    
+end
+
+% file scheda2_es8.m
+clear
+clc
+
+% a = [1 : 1: 10];
+a = 10;
+[sol, controllo, errore] = es_8(a);
+[sol; controllo; errore]
 % ------------------------------------------
