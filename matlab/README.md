@@ -133,6 +133,8 @@ s = 'stringa';
 - ylabel('...') -> Inserisce un nome per l’asse y
 - legend -> Inserisce una legenda per identificare le rappresentazioni diverse
 - hold on -> Fa sovrappor i grafici successivi nella stessa finestra grafica e non li sovrascrive
+- hold off -> tag di chiusura di hold on
+- figure -> apre diverse finestre per ogni grafico
 - subplot(m,n,p) -> suddivide la finestra in una serie di pannelli rettangolari disposti su m righe, n colonne. la variabile p indica su quale pannello porre l'output del comando plot che segue il comando subplot 
 
 
