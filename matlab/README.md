@@ -148,7 +148,7 @@ s = 'stringa';
 - M-File -> hanno estensione .m e in essi vengono memorizzati i programmi e le funzioni di MATLAB. Eseguire un M-file equivale a digitare titti i comandi in esso contenuti uno alla volta. Nel promt per avviarlo baasta digtare il nome del file.
 - % -> per creare commenti
 - Function-File -> utili per ripetere iù volte una sequenza di programmi e danno la possibilità di passare parametri. usati per creare sottoprogrammi. Il nome del file contenente la funzione DEVE essere necessariamente salvato con lo stesso nome dato alla funzione.
-
+ 
 -> La prima riga del file deve essere del tipo:
 
 ```matlab
