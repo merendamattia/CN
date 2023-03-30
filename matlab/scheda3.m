@@ -71,6 +71,12 @@ sc3_es2(5);
 subplot(2,3,6);
 sc3_es2(6);
 
+% versione iterativa 
+for i = 1 : 6
+    subplot(2, 3, i);
+    sc3_es2(i);
+end;
+
 % file sc3_es2.m
 function [] = sc3_es2(m);
 
@@ -84,3 +90,14 @@ function [] = sc3_es2(m);
         
 end
 % ------------------------------------------
+
+% Es. 3
+clear
+clc
+
+t = linspace(0, 2 * pi, 361);
+x = 3 + 6 * cos(t);
+y = 8 + 6 * sin(t);
+
+figure
+plot(x, y)
