@@ -126,7 +126,7 @@ s = 'stringa';
 - axis auto -> attiva le impostazioni di MATLAB che calcolano i limiti ideali degli assi in modo automatico
 - grid on -> aggiunge la griglia, grid off la si esclude
 - semilogx(x,y) -> La rappresentazione di grafici in scala logaritmica sull’asse x
-- semilogx(x,y) -> La rappresentazione di grafici in scala logaritmica sull’asse y
+- semilogy(x,y) -> La rappresentazione di grafici in scala logaritmica sull’asse y
 - loglog(x,y) -> La rappresentazione di grafici in scala logaritmica su entrambe le assi
 - title('...') -> Inserisce un titolo nel grafico
 - xlabel('...') -> Inserisce un nome per l’asse x
