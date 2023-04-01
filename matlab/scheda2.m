@@ -51,6 +51,7 @@ clc
 
 dim = 8;
 
+% punto A
 X = ones(1,dim);
 Y = (1:dim);
 
@@ -59,8 +60,26 @@ A = X.*Y';
 S = triu(A);
 I = tril(A);
 
-Z = zero(8,1);
-% da terminare
+% punto B
+for i=1:dim
+    S(i,i) = 0;
+    I(i,i) = 1;
+end
+
+B1 = zeros(8);
+B2 = zeros(8);
+B3 = zeros(8);
+
+for i = 1 : 8
+    B1(i,i) = A(i,i);
+    B2(i,i) = A(i,i);
+    B3(i,i) = A(i,i);
+end
+
+for i = 1 : 7
+    B2(i, i + 1) = A(i, i + 1);
+    B3(i + 1, i) = A(i + 1, i);
+end
 
 % ------------------------------------------
 
