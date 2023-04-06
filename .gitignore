@@ -2,4 +2,5 @@
 **/.obsidian/**
 **/.DS_Store
 **/bin/**
+**/tmp/**
 **.out
