@@ -49,6 +49,9 @@ for i = 1 : col
 end
 n1_calculated = max(values);
 
+% Norma 2 matrici
+n2_calculated = max(sqrt(eig(A'*A)));
+
 % Norma infinito matrici
 values = [];
 tmp = 0;
@@ -64,4 +67,5 @@ ninf_calculated = max(values);
 
 % Tests
 n1 == n1_calculated
+n2 == n2_calculated
 ninf == ninf_calculated
