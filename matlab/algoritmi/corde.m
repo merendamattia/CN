@@ -24,7 +24,7 @@ function [x, iter] = metodo_corde(f, x0, x1, tol, max_iter)
     while (iter < max_iter)
         
         % Calcolo dell'intersezione della retta con l'asse delle ascisse
-        x = x0 - f0/(f1 - f0) * (x1 - x0);
+        x = x0 - f0 / (f1 - f0) * (x1 - x0);
         
         % Calcolo del valore della funzione nel nuovo punto
         fx = f(x);
