@@ -10,12 +10,18 @@ function [approx, num_iter] = newton(fun, dfun, x0, toll, max_iter)
     num_iter = 0;
     crit_arr = 1;
     
+    % criterio di arresto: numero di iterazioni + residuo
     while(num_iter < max_iter && crit_arr > toll)
         num_iter = num_iter + 1;
-        x_next = x - (fun(x)/dfun(x));
+
+        x_next = x - (fun(x) / dfun(x));
+        
         approx = [approx; x_next];
-        %crit_arr = abs(x_next - x); %criterio incremento
-        crit_arr = abs(fun(x_next)); %criterio residuo
+        
+        %crit_arr = abs(x_next - x); % criterio incremento
+        crit_arr = abs(fun(x_next)); % criterio residuo
+        
         x = x_next;
     end
+end
     

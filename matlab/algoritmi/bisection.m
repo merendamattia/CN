@@ -9,17 +9,25 @@ function [x, fx, n] = bisection(f, a, b, tol, maxiter)
     end
     
     n = 0;
+    
+    % criterio di arresto: numero di iterazioni
     while n < maxiter
+        
         x = (a + b) / 2;
         fx = f(x);
-        if abs(fx) < tol
+        
+        % criterio di arresto: residuo
+        if abs(fx) < tol 
             return
-        elseif f(a) * fx < 0
+        
+        if f(a) * fx < 0
             b = x;
         else
             a = x;
         end
+
         n = n + 1;
     end
     
     warning('Raggiunto il numero massimo di iterazioni.')
+end
