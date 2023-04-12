@@ -1,4 +1,4 @@
-
+> Realizzato da @SimoneColli
 - Scrivere la definizione generale di condizionamento:
 
 $$
