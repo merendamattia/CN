@@ -1,4 +1,5 @@
- - Definire la norma 1, 2 e inf di un vettore
+> Realizzato da @SimoneColli
+- Definire la norma 1, 2 e inf di un vettore
 
 _Norma 1_
 $$
