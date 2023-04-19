@@ -36,7 +36,7 @@ $\alpha$ si dice radice semplice se $f(\alpha) = 0$ e  $f'(\alpha) = 0$
 
 ##### Definizione
 
-$\alpha$ si dice radice di ordine m se $f^{(m-1)}(\alpha) = f^{(m-2)}(\alpha) = f^{(m-3)}(\alpha) =\ ...\ = f'(\alpha) = 0$. In tal caso scrivo $f(x) = (x-\alpha)^mh(x)$ con $h(\alpha) \ne 0$
+$\alpha$ si dice radice di ordine m se $f^{(m-1)}(\alpha) = f^{(m-2)}(\alpha) = f^{(m-3)}(\alpha) =\ \ldots\ = f'(\alpha) = 0$. In tal caso scrivo $f(x) = (x-\alpha)^mh(x)$ con $h(\alpha) \ne 0$
 
 > Nota
 > $f\in c^0_{(a,\ b)}$ vuol dire che $f$ è continua
@@ -96,7 +96,7 @@ Il metodo di bisezione è globalmente convergente
 > Il metodo di bisezione è globalmente convergente perché garantisce la convergenza alla radice per qualsiasi intervallo chiuso e limitato, purché la funzione abbia valori di segno opposto ai due estremi dell'intervallo. Questa condizione è detta "teorema degli zeri" ed è fondamentale per la convergenza del metodo di bisezione
 
 ##### Osservazione
-Se fisso una tolleranza $\mathcal{E} = {10^{-6}/10^{-7}/10^{-8}/.....}$ posso ottenere a priori il numero di passi encessari per ottenere un approssimazione della radice con la tolleranza richiesta
+Se fisso una tolleranza $\mathcal{E} = {10^{-6}/10^{-7}/10^{-8}/\ldots}$ posso ottenere a priori il numero di passi encessari per ottenere un approssimazione della radice con la tolleranza richiesta
 
 $$e_m \le \mathcal{E}$$
 $$|x_m-\alpha| \le \mathcal{E}$$
@@ -116,7 +116,7 @@ Il metodo di bisezione non è a convergenza monotona e converge "lentamente" ris
 
 ##### Definizione
 
-Si dice che la successione $\{x_{k}\}_{k=0,\ 1,\ ...}$ generata da un metodo numerico che converge ad $\alpha$ con ordine $p$ se:
+Si dice che la successione $\{x_{k}\}_{k=0,\ 1,\ \ldots}$ generata da un metodo numerico che converge ad $\alpha$ con ordine $p$ se:
 $\exists e > 0\ :\ |x_{k+1} - \alpha| \le e|x_k-\alpha|^p$, $\forall k \ge k_0$, $k_0\in \mathbb{N}$
 
 > Nota
@@ -142,7 +142,7 @@ Nel caso $p = 1$ per avere la convergenza ad $\alpha$, necessariamente $e<1$
 Supponendo che $\alpha$ sia la radice della funzione non lineare $f$. E supponendo anche che $f$ sia derivabile.
 <br>
 $$
-0 = f(\alpha)=f(x_0)+f'(x_0)(\alpha-x_0)+f''(x_0)\dfrac{(\alpha-x_0)^2}{2!}+f'''(x_0)\dfrac{(\alpha-x_0)^3}{3!}+\ ...\ + \sigma(\alpha-x_0)^k
+0 = f(\alpha)=f(x_0)+f'(x_0)(\alpha-x_0)+f''(x_0)\dfrac{(\alpha-x_0)^2}{2!}+f'''(x_0)\dfrac{(\alpha-x_0)^3}{3!}+\ \ldots\ + \sigma(\alpha-x_0)^k
 $$
 Quindi
 $$
@@ -218,7 +218,7 @@ Il metodo delle corde converge se:
 $$
 \begin{cases}
 x_0\ dato\\
-x_{k+1} = x_k-\dfrac{f(x_k)}{f'(x_k)}\qquad\quad k=0, 1,\ ...;f'(x_k) \ne 0 
+x_{k+1} = x_k-\dfrac{f(x_k)}{f'(x_k)}\qquad\quad k=0, 1,\ \ldots;f'(x_k) \ne 0 
 \end{cases}
 $$
 
@@ -244,7 +244,7 @@ Il metodo di newton ha ordine di convergenza $p=2$. Ciò significa che l'errore 
 ---
 ## Criteri di arresto
 
-Ricavando una successione  $\{x_{k}\}_{k=0,\ 1,\ ...}$ tale che $\lim_{k\to \infty}{(x_k)} = \alpha$.
+Ricavando una successione  $\{x_{k}\}_{k=0,\ 1,\ \ldots}$ tale che $\lim_{k\to \infty}{(x_k)} = \alpha$.
 Fissando una tolleranza $\mathcal{E}\in\mathbb{R}^+$.
 
 #### Criterio del residuo
@@ -284,9 +284,9 @@ $$
 Dove $\varphi(x)=\sin(x)\tan(x)+3$ e $d=3$
 
 $$
-d+\delta d=\varphi(x+\delta x)=(sviluppo\ di\ taylor)=\varphi(x)+\varphi '(x)\delta x+\dfrac{\varphi ''(x)}{2}(\delta x)^2+\ ...\ + \dfrac{\varphi ^{k}(x)}{k!}(\delta x)^k+\sigma(\delta x)^m
+d+\delta d=\varphi(x+\delta x)=(sviluppo\ di\ taylor)=\varphi(x)+\varphi '(x)\delta x+\dfrac{\varphi ''(x)}{2}(\delta x)^2+\ \ldots\ + \dfrac{\varphi ^{k}(x)}{k!}(\delta x)^k+\sigma(\delta x)^m
 $$
-Supponendo che $x$ sia radice di ordine $m\ :\ \varphi^k(x)=0\qquad k=1,\ ...,\ m-1$
+Supponendo che $x$ sia radice di ordine $m\ :\ \varphi^k(x)=0\qquad k=1,\ \ldots,\ m-1$
 
 $$
 \delta d=\dfrac{\varphi_m(x)}{m!}(\delta x)^m+\sigma(\delta x)^m=\dfrac{f_m(x)}{m!}(\delta x)^m
@@ -441,7 +441,7 @@ Una norma $p$, con $1\le p<\infty$, si indica con $||x||_p=(\displaystyle\sum_{i
 Ci sono casi particolari di norme:
 - Norma uno, $||x||_1 = \displaystyle\sum_{i=1}^{n}{|x_i|}$
 - Norma euclidea, $||x||_2=\sqrt{\displaystyle\sum_{i=1}^{n}{|x_i|^2}}$
-- Norma infinito, $||x||_\infty=\displaystyle\max_{i=1,\ ...,\ n}{|x_i|}$
+- Norma infinito, $||x||_\infty=\displaystyle\max_{i=1,\ \ldots,\ n}{|x_i|}$
 
 ## Norma di una matrice
 
@@ -500,7 +500,7 @@ $$
 2
 \end{array}
 \right)
-\to\ ...\ \to
+\to\ \ldots\ \to
 \left(
 \begin{array}{cc}
 3 & 2 \\
@@ -546,24 +546,24 @@ La soluzione del sistema lineare $A\underline x=\underline b\qquad A\in\mathbb{R
 
 $$
 \begin{cases}
-a_{11}x_1+a_{12}x_2+\ ...\ + a_{1n}x_n=b_1\\
-a_{21}x_1+a_{22}x_2+\ ...\ + a_{2n}x_n=b_2\\
-...\\
-a_{n1}x_1+a_{n2}x_2+\ ...\ + a_{nn}x_n=b_n\\
+a_{11}x_1+a_{12}x_2+\ \ldots\ + a_{1n}x_n=b_1\\
+a_{21}x_1+a_{22}x_2+\ \ldots\ + a_{2n}x_n=b_2\\
+\vdots\\
+a_{n1}x_1+a_{n2}x_2+\ \ldots\ + a_{nn}x_n=b_n\\
 \end{cases}\qquad\implies\qquad
 \left[
 \begin{array}{c}
-a_{11} & a_{12} & \ ...\ & a_{1n}\\
-a_{21} & a_{22} & \ ...\ & a_{2n}\\
-...\\
-a_{n1} & a_{n2} & \ ...\ & a_{nn}\\
+a_{11} & a_{12} & \ \ldots\ & a_{1n}\\
+a_{21} & a_{22} & \ \ldots\ & a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{n1} & a_{n2} & \ \ldots\ & a_{nn}\\
 \end{array}
 \right]
 \left[
 \begin{array}{c}
 x_1\\
 x_2\\
-...\\
+\vdots\\
 x_n\\
 \end{array}
 \right]
@@ -572,7 +572,7 @@ x_n\\
 \begin{array}{c}
 b_1\\
 b_2\\
-...\\
+\ldots\\
 b_n\\
 \end{array}
 \right]
@@ -632,10 +632,10 @@ $$
 D=
 \left[
 \begin{array}{c}
-10^{-1} & 0 & ... & 0\\
-0 & 10^{-1} & ... & 0\\
-... & ... & ... & ...\\
-0 & 0 & ... & 10^{-1}
+10^{-1} & 0 & \ldots & 0\\
+0 & 10^{-1} & \ldots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \ldots & 10^{-1}
 \end{array}
 \right]
 \qquad D\in\mathbb{R}^{n*n}\qquad\det{(D)}= 10^{-n}
@@ -645,10 +645,10 @@ $$
 D^{-1}=
 \left[
 \begin{array}{c}
-10 & 0 & ... & 0\\
-0 & 10 & ... & 0\\
-... & ... & ... & ...\\
-0 & 0 & ... & 10
+10 & 0 & \ldots & 0\\
+0 & 10 & \ldots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \ldots & 10
 \end{array}
 \right]
 \qquad cond_1(D)=||D||_1\cdot||D^{-1}||_1=1
@@ -729,24 +729,24 @@ Matrice diagonale: $A\underline{x}=\underline{b}$
 $$
 A=
 \left(\begin{array}{c}
-a_{11}& 0 & ... & 0\\
-0 & a_{22} & ... & 0\\
-...&...&...&...\\
-0 & 0 & ... & a_{nn}\\
+a_{11}& 0 & \ldots & 0\\
+0 & a_{22} & \ldots & 0\\
+\vdots&\vdots&\ddots&\vdots\\
+0 & 0 & \ldots & a_{nn}\\
 \end{array}\right)
 \left(\begin{array}{c}
-x_1\\x_2\\...\\x_n
+x_1\\x_2\\\vdots\\x_n
 \end{array}\right)=
 \left(\begin{array}{c}
-b_1\\b_2\\...\\b_n
+b_1\\b_2\\\vdots\\b_n
 \end{array}\right)\to
 \begin{array}{c}
-x_1=\dfrac{b_1}{a_{11}}\\x_2=\dfrac{b_2}{a_{22}}\\...\\x_n=\dfrac{b_n}{a_{nn}}
+x_1=\dfrac{b_1}{a_{11}}\\x_2=\dfrac{b_2}{a_{22}}\\\vdots\\x_n=\dfrac{b_n}{a_{nn}}
 \end{array}
 $$
 
 $$
-\det{(A)}\ne0\qquad\det{(A)}=\displaystyle\prod_{i=1}^{n}{a_{ii}}\qquad\implies a_{ii}\ne0\quad i=1,\ 2,\ ..
+\det{(A)}\ne0\qquad\det{(A)}=\displaystyle\prod_{i=1}^{n}{a_{ii}}\qquad\implies a_{ii}\ne0\quad i=1,\ 2,\ \ldots
 $$
 
 > Costo computazionale= numero di divisioni 
@@ -756,21 +756,21 @@ Matrice triangolare inferiore
 $$
 A=
 \left(\begin{array}{c}
-a_{11}& 0 & ... & 0\\
-a_{21} & a_{22} & ... & 0\\
-...&...&...&...\\
-a_{n1} & a_{n2} & ... & a_{nn}\\
+a_{11}& 0 & \ldots & 0\\
+a_{21} & a_{22} & \ldots & 0\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{n1} & a_{n2} & \ldots & a_{nn}\\
 \end{array}\right)
 \left(\begin{array}{c}
-x_1\\x_2\\...\\x_n
+x_1\\x_2\\\vdots\\x_n
 \end{array}\right)=
 \left(\begin{array}{c}
-b_1\\b_2\\...\\b_n
+b_1\\b_2\\\vdots\\b_n
 \end{array}\right)\quad\to\quad
 \begin{array}{c}
 a_{11}x_1=b_1\\
 a_{21}a_{22}x_2=b_1 \iff\dfrac{b_2-a_{21}x_1}{a_{22}}\\
-...\\
+\vdots\\
 x_n=\dfrac{b_n-\displaystyle\sum_{i=1}^{n-1}{a_{ni}x_i}}{a_{nn}}
 \end{array}
 
@@ -781,7 +781,7 @@ $$
 > Nota
 > Algoritmo di sostituzione in avanti
 > 
-> $x_i=\dfrac{b_i-\displaystyle\sum_{j=1}^{i-1}{a_{ij}x_j}}{a_{ii}}\qquad i=1,\ ...,\ n$
+> $x_i=\dfrac{b_i-\displaystyle\sum_{j=1}^{i-1}{a_{ij}x_j}}{a_{ii}}\qquad i=1,\ \ldots,\ n$
 > 
 
 > Nota
@@ -794,22 +794,22 @@ Matrice triangolare superiore
 $$
 A=
 \left(\begin{array}{c}
-a_{11}& a_{12} & ... & a_{1n}\\
-0 & a_{22} & ... & a_{2n}\\
-...&...&...&...\\
-0 & 0 & ... & a_{nn}\\
+a_{11}& a_{12} & \ldots & a_{1n}\\
+0 & a_{22} & \ldots & a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+0 & 0 & \ldots & a_{nn}\\
 \end{array}\right)
 \left(\begin{array}{c}
-x_1\\x_2\\...\\x_n
+x_1\\x_2\\\vdots\\x_n
 \end{array}\right)=
 \left(\begin{array}{c}
-b_1\\b_2\\...\\b_n
+b_1\\b_2\\\vdots\\b_n
 \end{array}\right)\quad\to\quad
 \begin{array}{c}
 a_{nn}x_n=b_n\to x_n=\dfrac{b_n}{a_{nn}}\\
 a_{(n-1)(n-1)}x_{n-1}+a_{(n-1)n}x_n=b_{n-1} \to x_{n-1}\dfrac{b_{n-1}-a_{(n-1)n}x_n}{a_{(n-1)(n-1)}}\\
-...\\
-x_i=\dfrac{b_i-\displaystyle\sum_{j=i+1}^{n}{a_{ij}x_j}}{a_{ii}}\qquad i=n,\ n-1,\ ...,\ 1
+\vdots\\
+x_i=\dfrac{b_i-\displaystyle\sum_{j=i+1}^{n}{a_{ij}x_j}}{a_{ii}}\qquad i=n,\ n-1,\ \ldots,\ 1
 \end{array}
 
 $$
