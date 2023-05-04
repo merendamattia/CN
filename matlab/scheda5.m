@@ -61,6 +61,29 @@ disp(A);
 
 % ----------------------------------------------------------------------
 
+% Es. 2
+% Le funzioni trianginf e triangsup si trovano in 
+% ./matlab/algoritmi/sostituzioni_successive/
+clear
+clc
+close all
 
+format rat 
 
+A1 = [10 0 0 0; 8 9 0 0; 5 6 7 0; 1 2 3 4];
+A2 = [10 0 0 0; 8 9 0 0; 5 6 0 0; 1 2 3 4];
+A3 = [1 2 3 4; 0 9 8 7; 0 0 3 9; 0 0 0 4];
+b = [10 17 18 10]';
+
+x_calculated = trianginf(A1, b);
+x_matlab = A1 \ b;
+test1 = [x_calculated x_matlab] % true
+
+% x_calculated = trianginf(A2, b); % restituisce errore perche A2 non è una matrice triangolare inferiore
+% x_matlab = A2 \ b;
+% test2 = [x_calculated x_matlab]; % false
+
+x_calculated = triangsup(A3, b);
+x_matlab = A3 \ b;
+test3 = [x_calculated x_matlab] % true
 
