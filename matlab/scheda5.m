@@ -130,3 +130,55 @@ fprintf("(AB)' =\n");
 display((A * B)');
 fprintf("B' * A' =\n");
 display(B' * A');
+
+% ----------------------------------------------------------------------
+
+% Es. 5
+
+clear 
+clc
+close all
+
+n = 50;
+res_det = [];
+res_cond= [];
+
+for i = 1 : n
+    A = scheda5_es5_function(i);
+    res_det = [res_det det(A)];
+    res_cond = [res_cond cond(A)];
+end
+
+figure
+
+x = [1 : 50];
+
+subplot(1, 2, 1);
+plot(x, res_det, 'DisplayName', 'det');
+grid on
+legend
+
+subplot(1, 2, 2);
+plot(x, res_cond, 'DisplayName', 'cond');
+grid on
+legend
+
+% function scheda5_es5_function
+function [A] = scheda5_es5_function(n)
+    
+    A = zeros(n,n);
+
+    for i = 1 : n
+        for j = 1 : n
+            if ((j + i) == (n + 1))
+                A(i,j) = 2;
+            end
+            if ((j + i) == n)
+                A(i,j) = -1;
+            end
+            if ((j + i) == (n + 2))
+                A(i,j) = -1;
+            end
+        end
+    end
+end
