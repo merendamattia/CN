@@ -163,7 +163,7 @@ plot(x, res_cond, 'DisplayName', 'cond');
 grid on
 legend
 
-% function scheda5_es5_function
+% function scheda5_es5_function originale
 function [A] = scheda5_es5_function(n)
     
     A = zeros(n,n);
@@ -180,6 +180,25 @@ function [A] = scheda5_es5_function(n)
                 A(i,j) = -1;
             end
         end
+    end
+end
+
+% function scheda5_es5_function ottimizzata
+function [A] = scheda5_es5_function(n)
+    
+    % matrice d'appoggio
+    matrix = zeros(n, n);
+    % diagonale principale
+    dp = 2*ones(n, 1);
+    % diagonale secondaria
+    ds = -1*ones(n-1, 1);
+    
+    matrix = matrix + diag(dp) + diag(ds, -1) + diag(ds, 1);
+    
+    % crea la matrice a inserendo le righe della matrice di appoggio matrix partendo da i = n
+    A=[];
+    for i=n:-1:1
+        A=[A; matrix(i, :)];
     end
 end
 
