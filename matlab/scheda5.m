@@ -87,3 +87,46 @@ x_calculated = triangsup(A3, b);
 x_matlab = A3 \ b;
 test3 = [x_calculated x_matlab] % true
 
+% ----------------------------------------------------------------------
+
+% Es. 4
+
+clear
+clc
+close all
+
+A = [2 3 1; 1 -1 1; 0 2 2];
+B = [1 2 1; -1 2 -1; 2 0 2];
+C = [1 0 1; 0 1 1; 1 0 2];
+
+% (a) Calcolare AB e BA e mostrare che AB != BA
+fprintf('\n');
+fprintf('(a) Calcolare AB e BA e mostrare che AB != BA\n');
+fprintf('AB =\n');
+display(A*B);
+fprintf('BA =\n');
+display(B*A);
+
+% (b) Confrontare (A + B) + C e A + (B + C)
+fprintf('\n');
+fprintf('(b) Confrontare (A + B) + C e A + (B + C)\n');
+fprintf('(A + B) + C =\n');
+display((A + B) + C);
+fprintf('A + (B + C) =\n');
+display(A + (B + C));
+
+% (c) Confrontare A(BC) e (AB)C
+fprintf('\n');
+fprintf('(c) Confrontare A(BC) e (AB)C\n');
+fprintf('A(BC) =\n');
+display(A * (B * C));
+fprintf('(AB)C =\n');
+display((A * B) * C);
+
+% (d) (d) Confrontare (AB)' e B' * A'
+fprintf('\n');
+fprintf("(d) Confrontare (AB)' e B' * A'\n");
+fprintf("(AB)' =\n");
+display((A * B)');
+fprintf("B' * A' =\n");
+display(B' * A');
