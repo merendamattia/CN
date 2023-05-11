@@ -166,20 +166,19 @@ legend
 % function scheda5_es5_function
 function [A] = scheda5_es5_function(n)
     
-    A = zeros(n,n);
-
-    for i = 1 : n
-        for j = 1 : n
-            if ((j + i) == (n + 1))
-                A(i,j) = 2;
-            end
-            if ((j + i) == n)
-                A(i,j) = -1;
-            end
-            if ((j + i) == (n + 2))
-                A(i,j) = -1;
-            end
-        end
+    % matrice d'appoggio
+    matrix = zeros(n, n);
+    % diagonale principale
+    dp = 2*ones(n, 1);
+    % diagonale secondaria
+    ds = -1*ones(n-1, 1);
+    
+    matrix = matrix + diag(dp) + diag(ds, -1) + diag(ds, 1);
+    
+    % crea la matrice a inserendo le righe della matrice di appoggio matrix partendo da i = n
+    A=[];
+    for i=n:-1:1
+        A=[A; matrix(i, :)];
     end
 end
 
