@@ -151,7 +151,7 @@ end
 
 figure
 
-x = [1 : 50];
+x = [1 : n];
 
 subplot(1, 2, 1);
 plot(x, res_det, 'DisplayName', 'det');
@@ -182,3 +182,7 @@ function [A] = scheda5_es5_function(n)
         end
     end
 end
+
+% ----------------------------------------------------------------------
+
+% Es. 6
