@@ -173,6 +173,7 @@ devo risolvere i sistemi lineari $A\underline x_i=\underline e_i$ con $i = 1,\ \
 
 ---
 
+<!-- 
 ## Fattorizzazione LU
 Il metodo di fattorizzazione LU è un'altra tecnica utilizzata per risolvere sistemi lineari di equazioni. A differenza del metodo di eliminazione di Gauss, la fattorizzazione LU consiste nel fattorizzare la matrice dei coefficienti $A$ in un prodotto di due matrici triangolari, una superiore $U$ e una inferiore $L$, tali che $A = LU$. 
 
@@ -186,4 +187,4 @@ Funzionamento  dell'algoritmo:
 
 L'algoritmo di fattorizzazione LU ha una complessità computazionale di $O(n^3)$ come il metodo di eliminazione di Gauss, ma è utile quando si vuole risolvere un sistema lineare per diversi vettori di termini noti. In questo caso, una volta che la matrice $L$ e $U$ sono state calcolate, la soluzione del sistema lineare per un vettore $b$ differente può essere trovata in due fasi: la sostituzione in avanti per risolvere $Ly=b$ e la sostituzione all'indietro per risolvere $Ux=y$.
 
-[_Torna all'indice_](#argomenti%20post-parziale)
+[_Torna all'indice_](#argomenti%20post-parziale) -->
