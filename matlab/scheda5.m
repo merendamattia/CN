@@ -163,7 +163,27 @@ plot(x, res_cond, 'DisplayName', 'cond');
 grid on
 legend
 
-% function scheda5_es5_function
+% function scheda5_es5_function originale
+function [A] = scheda5_es5_function(n)
+    
+    A = zeros(n,n);
+
+    for i = 1 : n
+        for j = 1 : n
+            if ((j + i) == (n + 1))
+                A(i,j) = 2;
+            end
+            if ((j + i) == n)
+                A(i,j) = -1;
+            end
+            if ((j + i) == (n + 2))
+                A(i,j) = -1;
+            end
+        end
+    end
+end
+
+% function scheda5_es5_function ottimizzata
 function [A] = scheda5_es5_function(n)
     
     % matrice d'appoggio
