@@ -205,3 +205,45 @@ end
 % ----------------------------------------------------------------------
 
 % Es. 6
+
+clear
+clc 
+close all
+
+A = hilb(1000);
+B = rand(1000);
+x = ones(1000,1);
+y = x;
+
+b = A*x;
+c = B*y;
+
+% Calcolo x e y con mldivide
+x2 = A\b;
+y2 = B\c;
+
+condA = cond(A);
+condB = cond(B);
+
+erA = norm(x2-x)/norm(x);
+erB = norm(y2-y)/norm(y);
+
+condizionamento = [];
+erA2 = [];
+
+for i = 2:50
+    A = hilb(i);
+    x = ones(i, 1);
+    b = A*x;
+    x2 = A\b;
+    erA2 = [erA2 norm(x2-x)/norm(x)];
+
+    condizionamento = [condizionamento cond(A)];
+end
+
+semilogy(2:50,condizionamento);
+title("Condizionamento")
+figure
+semilogy(2:50, erA2);
+title("Errore relativo")
+
