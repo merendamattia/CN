@@ -106,3 +106,20 @@ end
 
 
 % ----------------------------------------------------------------------
+% Es. 3
+clear
+clc
+close all
+
+% f = @(x) exp(x) .* cos(4*x);
+f = @(x) abs(x - 1);
+x = linspace(-3, 3, 100);
+% n = [5 10 20 40];
+n = 20;
+nodi = linspace(-3,3,n);
+valori = f(nodi);
+coeff = vander(nodi) \ valori';
+
+hold on
+plot(x, f(x), 'r', x, polyval(coeff,x), 'g', nodi, f(nodi), '*k')
+legend("funzione", "polinomio interpolatore", "nodi")
