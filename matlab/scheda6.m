@@ -111,15 +111,96 @@ clear
 clc
 close all
 
-% f = @(x) exp(x) .* cos(4*x);
-f = @(x) abs(x - 1);
-x = linspace(-3, 3, 100);
-% n = [5 10 20 40];
-n = 20;
-nodi = linspace(-3,3,n);
-valori = f(nodi);
-coeff = vander(nodi) \ valori';
+a = -3;
+b = 3;
+
+% f = @(x) exp(x) .* cos(4 * x); % PARTE 1
+f = @(x) abs(x - 1); % PARTE 2
+
+dominio_f = linspace(a, b, 100);
+immagine_f = f(dominio_f);
 
 hold on
-plot(x, f(x), 'r', x, polyval(coeff,x), 'g', nodi, f(nodi), '*k')
-legend("funzione", "polinomio interpolatore", "nodi")
+c = plot(dominio_f, immagine_f, 'DisplayName', 'f(x)');
+c.Color = '#BF40BF';
+legend
+
+n = 20; % degree
+
+x = linspace(a, b, n); % Mi servono n + 1 punti
+y = f(x);
+
+coeff_f = polyfit(x, y, n - 1); % coefficienti del polinomio interpolatore calcolati con polyfit
+pippo = vander(x); % matrice di Vandermonde calcolata su x
+res = pippo \ y'; % coeff. del pol. interp. calcolati con la matrice di Vande.
+
+errore = norm(coeff_f - res'); % errore assoluto 
+
+topolino = polyval(coeff_f, dominio_f); % valori interpolati del polinomio
+
+hold on
+c = plot(dominio_f, topolino, '--', 'DisplayName', 'p(x)');
+c.Color = 'black';
+legend
+
+hold on
+c = plot(x, y, '*', 'DisplayName', 'coeff. pol. inter.');
+c.Color = 'blue';
+legend
+
+
+% All'aumentare del numero dei nodi avremo che l'errore tenderà a 0
+% perchè il grado delle n derivare rimane sempre lo stesso.
+
+% ----------------------------------------------------------------------
+% Es. 4
+clear
+clc
+close all
+
+a = -1;
+b = 1;
+
+f = @(x) sin(x);
+dominio_f = linspace(a, b, 100);
+
+n = 22; % numero nodi
+degree = n - 1; % grado polinomio
+
+pippo = linspace(a, b, n);
+
+f_tilde = [];
+f_normale = [];
+
+for i = 1 : n
+    tmp_normale = f(pippo(i));
+    f_normale = [f_normale tmp_normale];
+
+    tmp_tilde = f(pippo(i)) * (1 + (-1)^i * 10^-4);
+    f_tilde = [f_tilde tmp_tilde];
+end
+
+coeff_normale = polyfit(pippo, f_normale, degree);
+coeff_tilde = polyfit(pippo, f_tilde, degree);
+
+griglia = linspace(a, b, 100);
+
+poly_norm = polyval(coeff_normale, griglia);
+poly_tilde = polyval(coeff_tilde, griglia);
+
+hold on
+c = plot(dominio_f, poly_norm, 'DisplayName', 'poly norm');
+c.Color = 'black';
+legend
+
+hold on
+c = plot(dominio_f, poly_tilde, 'DisplayName', 'poly tilde');
+c.Color = 'red';
+legend
+
+hold on
+c = plot(pippo, f_normale, '*', 'DisplayName', 'nodi');
+c.Color = 'blue';
+legend
+
+errore = norm(poly_norm - poly_tilde)
