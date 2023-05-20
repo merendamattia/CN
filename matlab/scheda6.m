@@ -148,7 +148,6 @@ c = plot(x, y, '*', 'DisplayName', 'coeff. pol. inter.');
 c.Color = 'blue';
 legend
 
-
 % All'aumentare del numero dei nodi avremo che l'errore tenderà a 0
 % perchè il grado delle n derivare rimane sempre lo stesso.
 
@@ -204,3 +203,67 @@ c.Color = 'blue';
 legend
 
 errore = norm(poly_norm - poly_tilde)
+
+% ----------------------------------------------------------------------
+% Es. 5
+clear
+clc
+close all
+
+a = -1;
+b = 1;
+n = 20; % numero nodi
+degree = n - 1; % grado per polyfit
+
+f = @(x) exp(x) + 1;
+dominio_f = linspace(a, b, 100);
+immagine_f = f(dominio_f);
+
+% x_punti = linspace(a, b, n);
+x_punti = cheb(a, b, n); % Ripetere l%esercizio usando i nodi di Chebyshev
+y_punti = f(x_punti);
+
+display(x_punti)
+
+coeff_f = vander(x_punti) \ y_punti'; % coeff. del polin. inter. calcolati con Vander
+
+immagine_f_tilde = [];
+
+for i = 1 : n
+    epsilon = (-1)^i * 10^-5;
+    tmp = f(x_punti(i)) + epsilon;
+
+    immagine_f_tilde = [immagine_f_tilde tmp];
+end
+
+coeff_f_tilde = vander(x_punti) \ immagine_f_tilde'; % coeff. del polin. inter. perturbato
+
+% Confrontare i grafici dei polinomi p(x) e pˆ(x).
+figure
+hold on
+grid on
+
+c = plot(dominio_f, immagine_f, 'DisplayName', 'f(x)');
+c.Color = 'black';
+
+c = plot(x_punti, polyval(coeff_f, x_punti), '--', 'DisplayName', 'p(x)');
+c.Color = 'red';
+
+c = plot(x_punti, polyval(coeff_f_tilde, x_punti), '--', 'DisplayName', 'p(x) perturbato');
+c.Color = 'green';
+
+c = plot(x_punti, y_punti, '*', 'DisplayName', 'nodi');
+c.Color = 'blue';
+legend
+
+% max|a_i - a^_i|
+max_coeff = norm(coeff_f - coeff_f_tilde, inf);
+display(max_coeff);
+
+% max|p(t) - p^(t)|
+t = linspace(a, b, 101);
+max_p = norm(polyval(coeff_f, t) - polyval(coeff_f_tilde, t), inf);
+display(max_p);
+
+% Utilizzando i nodi di Cheb avremo un'approssimazione migliore rispetto
+% all'utilizzo di nodi equidistanti
