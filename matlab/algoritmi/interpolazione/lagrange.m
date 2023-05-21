@@ -13,6 +13,8 @@ function [pl] = lagrange(xnodi, ynodi, x)
 
     % inizializzo il polinomio di Lagrange a 0
     pl = 0;
+
+    L = [];
     
     % calcolo i polinomi della base associati al nodo i
     for i = 1 : n
