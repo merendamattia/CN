@@ -104,6 +104,21 @@ function [y] = cheb(a, b, n)
     end
 end
 
+% funzione cheb() senza cicli
+function [x] = cheb(a, b, n)
+	
+	% a: estremo sx dell'intervallo
+	% b: estremo dx dell'intervallo
+	% n: grado
+
+	i = 0 : 1 : n;
+	cos_ = ((2.*i+1)./(2.*n+2)).*pi
+	x = (a+b)/2 - (b-a)/2 .* cos(cos_);
+
+end
+
+
+
 
 % ----------------------------------------------------------------------
 % Es. 3
