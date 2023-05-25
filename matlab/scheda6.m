@@ -215,7 +215,9 @@ legend
 hold on
 c = plot(pippo, f_normale, '*', 'DisplayName', 'nodi');
 c.Color = 'blue';
-legend
+
+l = legend
+l.Location = 'northwest';
 
 errore = norm(poly_norm - poly_tilde)
 
