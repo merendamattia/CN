@@ -118,8 +118,6 @@ function [x] = cheb(a, b, n)
 end
 
 
-
-
 % ----------------------------------------------------------------------
 % Es. 3
 clear
@@ -284,3 +282,5 @@ display(max_p);
 
 % Utilizzando i nodi di Cheb avremo un'approssimazione migliore rispetto
 % all'utilizzo di nodi equidistanti
+
+% ----------------------------------------------------------------------
