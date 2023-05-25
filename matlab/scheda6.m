@@ -284,3 +284,44 @@ display(max_p);
 % all'utilizzo di nodi equidistanti
 
 % ----------------------------------------------------------------------
+% Es. 6
+clear
+clc
+close all
+
+f = @(x) sqrt(x);
+
+% x = [0.49, 0.64, 0.81]; % nodi
+x = [0.36, 0.49, 0.64, 0.81]; % nodi
+y = f(x); % immagine nodi
+
+n = length(x); % numero nodi
+degree = n - 1; % grado 
+
+coeff_x = polyfit(x, y, degree);
+
+dom_f = linspace(0, 1, 100);
+
+imm_lagrange = polyval(coeff_x, dom_f);
+imm_sqrt = f(dom_f);
+
+a = 0.6;
+imm_a = polyval(coeff_x, a);
+scarto = abs(imm_a - sqrt(a))
+
+figure
+grid on
+hold on
+l = legend;
+l.Location = 'southeast';
+
+c = plot(dom_f, imm_lagrange, 'DisplayName', 'p(x) Lagrange');
+c.Color = 'blue';
+
+c = plot(dom_f, imm_sqrt, 'DisplayName', 'y = sqrt(x)');
+c.Color = 'red';
+
+c = plot(x, y, '*', 'DisplayName', 'nodi');
+c.Color = 'black';
+
+% ----------------------------------------------------------------------
