@@ -324,4 +324,48 @@ c.Color = 'red';
 c = plot(x, y, '*', 'DisplayName', 'nodi');
 c.Color = 'black';
 
+% Versione con tabella delle differenze divise (di Newton)
+% radice da calcolare
+x = 0.6;
+
+% nodi
+x_0 = 0.49;
+x_1 = 0.64;
+x_2 = 0.81;
+
+y_0 = 0.7; 
+y_1 = 0.8;
+y_2 = 0.9;
+
+yy_01 = (y_1 - y_0)/(x_1-x_0); 
+yy_12 = (y_2 - y_1)/(x_2-x_1); 
+
+yyy_012 = (yy_12 - yy_01)/(x_2-x_0); 
+
+p_x = y_0 + yy_01*(x-x_0) + yyy_012*(x-x_0)*(x-x_1);
+
+sq = sqrt(x);
+x_nodi = [x_0 x_1 x_2];
+y_nodi = [y_0 y_1 y_2];
+nNodi = 3;
+pf = polyfit(x_nodi, y_nodi, nNodi-1);
+pv = polyval(pf, x);
+
+v = [p_x sq pv]
+
+err_px = abs(p_x-sq)
+
+% aggiungo un nodo
+
+x_3 = 0.36;
+y_3 = 0.6;
+
+yy_23 = (y_3 - y_2)/(x_3-x_2); 
+yyy_123 = (yy_23 - yy_12)/(x_3-x_1);
+yyyy_0123 = (yyy_123 - yyy_012)/(x_3 - x_0); 
+
+p_x = p_x + yyyy_0123*(x - x_0)*(x - x_1)*(x - x_2);
+
+err_px = abs(p_x-sq)
+
 % ----------------------------------------------------------------------
