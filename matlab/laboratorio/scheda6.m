@@ -235,7 +235,7 @@ dominio_f = linspace(a, b, 100);
 immagine_f = f(dominio_f);
 
 % x_punti = linspace(a, b, n);
-x_punti = cheb(a, b, n); % Ripetere l%esercizio usando i nodi di Chebyshev
+x_punti = cheb(a, b, degree); % Ripetere l%esercizio usando i nodi di Chebyshev
 y_punti = f(x_punti);
 
 display(x_punti)
