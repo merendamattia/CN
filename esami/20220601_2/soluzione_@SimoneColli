@@ -1,0 +1,189 @@
+
+## 20220601 prova 2
+
+_Esercizio 1_
+
+Una formula di quadratura di tipo interpolatorio può essere utilizzata per approssimare il valore di un integrale definito utilizzando un polinomio interpolatore che stima una funzione passante per dei nodi appartenenti all'intervallo d'integrazione. I passi per ottenere una formula di quadratura sono:
+
+1. Scegliere una famiglia di polinomi interpolatori, tipo Lagrange o Newton
+2. Scegliere i nodi che saranno utilizzati per approssimare la funzione
+3. Approssimare il polinomio interpolatore passante per i nodi
+4. Attribuire dei pesi a ciascun nodo
+5. Approssimare l'integrale definito sommando i pesi relativi ai nodi
+
+_Esercizio 2_
+
+La formula del trapezio semplice permette di approssimare un integrale definito andandolo a approssimare calcolando l'area di un trapezio che presenterà le due basi pari al valore della funzione calcolata degli estremi e l'altezza apri alla differenza degli estremi, ovvero:
+
+$$
+I_t= \dfrac{b-a}{2}*(f(a)+f(b))
+$$
+
+_Esercizio 3_
+
+```c
+clc;
+clear;
+close all;
+
+f = @(x) sin(x);
+
+a = -pi/2;
+b = pi/2;
+
+dom_f = a-1:0.1:b+1;
+
+plot(dom_f, f(dom_f), 'r', DisplayName='f(x)');
+
+hold on;
+
+I_t = (b-a)/2 * (f(a)+f(b));
+
+plot([a, a], [0, f(a)], 'g', DisplayName='Base 1');
+
+plot([b, b], [0, f(b)], 'g', DisplayName='Base 2');
+
+plot([a, b], [f(a), f(b)], '--b', DisplayName='Diagonale');
+
+plot([a, b], [0, 0], 'b', DisplayName='Altezza');
+
+legend;
+```
+
+> Commento
+> Il valore ottenuto in questo caso risulta corretto dato che i valori calcolati da $f$ negli estremi sono opposti
+
+_Esercizio 4_
+
+```c
+clc;
+clear;
+close all;
+
+f = @(x) sin(x);
+
+a = pi/2;
+
+b = 5/2*pi;
+
+dom_f = a-1:0.1:b+1;
+
+plot(dom_f, f(dom_f), 'r', DisplayName='f(x)');
+
+hold on;
+
+ylim([-2 2]);
+
+I_t = (b-a)/2 * (f(a)+f(b));
+
+plot([a, a], [0, f(a)], 'g', DisplayName='Base 1');
+
+plot([b, b], [0, f(b)], 'g', DisplayName='Base 2');
+
+plot([a, b], [f(a), f(b)], '--b', DisplayName='Diagonale');
+
+plot([a, b], [0, 0], 'b', DisplayName='Altezza');
+
+legend;
+
+integral(f, a, b);
+```
+
+> Commento
+> In questo caso la funzione per il calcolo dell'integrale restituisce un risultato scorretto perché va ad approssimare un trapezio che esclude parte della funzione, al di sotto di $y = 0$, ed aggiungendo in eccesso parte di superficie non sottostante alla funzione. Questo accade perché i valori calcolati in $f(a)$ ed $f(b)$ sono sopra ad $y=0$
+
+_Esercizio 5_
+
+La formula dei trapezi composita sfrutta una decomposizione dell'intervallo di integrazione in $n$ sotto intervalli ed utilizza su ciascuno di essi la formala del trapezio aumentando così la precisione ottenuta nel calcolo dell'integrale dato che i trapezi riescono a seguire al meglio la funzione.
+
+_Esercizio 6_
+
+```c
+% funzione
+function [I] = trapComposita(f, a, b, nIntervalli)
+
+	h = (b-a)/nIntervalli;
+	x = a : h : b;
+	y = f(x);
+	
+	I = h/2*(2*sum(y) -y(1)-y(length(y)));
+end
+
+%codice
+
+clc;
+clear;
+close all;
+
+f = @(x) sin(x);
+
+a = 0;
+
+b = pi;
+
+I_t = trapComposita(f, a, b, 200);
+
+integral(f, a, b);
+```
+
+_Esercizio 7_
+
+```c
+clc;
+clear;
+close all;
+
+f = @(x) sin(x);
+
+a = 0;
+
+b = pi;
+
+nMax = 300;
+
+n = 1 : 10 : nMax;
+
+err = [];
+
+vals = [];
+
+int = integral(f, a, b);
+
+for i=n
+
+I_t = trapComposita(f, a, b, i);
+
+vals = [vals I_t];
+
+err = [err int-I_t];
+
+end
+
+subplot(1, 2, 1);
+
+plot(n, vals, 'r', DisplayName='integrale con n intervalli');
+
+hold on;
+
+plot([n(1) n(length(n))], [int int], 'b', DisplayName='integrale corretto');
+
+title('Valore calcolato');
+
+ylim([-0.5 3]);
+
+legend;
+
+subplot(1, 2, 2);
+
+plot(n, err, 'r', DisplayName='errore');
+
+hold on;
+
+plot([0, nMax], [0 0], 'b', DisplayName='0');
+
+title('Decadimento errore');
+
+ylim([-0.5 3]);
+
+legend;
+```
