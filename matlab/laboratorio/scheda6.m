@@ -369,3 +369,111 @@ p_x = p_x + yyyy_0123*(x - x_0)*(x - x_1)*(x - x_2);
 err_px = abs(p_x-sq)
 
 % ----------------------------------------------------------------------
+% Es. 7
+clear
+clc
+close all
+
+figure
+
+a = -1;
+b = 1;
+dominio_f = linspace(a, b, 100);
+
+subplot(2,1,1);
+grid on
+% ---------------------- n = 4
+n = 4; % numero nodi
+nodi = linspace(a, b, n); % nodi equispaziati
+
+immagine_f = scheda6_es7_function(nodi, dominio_f);
+
+hold on
+c = plot(dominio_f, immagine_f, 'DisplayName', 'n = 4');
+c.Color = "red";
+
+% ---------------------- n = 6
+n = 6; % numero nodi
+nodi = linspace(a, b, n); % nodi equispaziati
+
+immagine_f = scheda6_es7_function(nodi, dominio_f);
+
+hold on
+c = plot(dominio_f, immagine_f, 'DisplayName', 'n = 6');
+c.Color = "blue";
+
+% ---------------------- n = 8
+n = 8; % numero nodi
+nodi = cheb(a, b, n); % nodi cheb
+
+immagine_f = scheda6_es7_function(nodi, dominio_f);
+
+hold on
+c = plot(dominio_f, immagine_f, 'DisplayName', 'n = 8');
+c.Color = "green";
+
+title('nodi equispaziati')
+l = legend;
+l.Location = "best";
+
+subplot(2,1,2);
+grid on
+% ---------------------- n cheb = 4
+n = 4; % numero nodi
+nodi = cheb(a, b, n); % nodi cheb
+
+immagine_f = scheda6_es7_function(nodi, dominio_f);
+
+hold on
+c = plot(dominio_f, immagine_f, 'DisplayName', 'n cheb = 4');
+c.Color = "blue";
+
+% ---------------------- n cheb = 6
+n = 6; % numero nodi
+nodi = cheb(a, b, n); % nodi cheb
+
+immagine_f = scheda6_es7_function(nodi, dominio_f);
+
+hold on
+c = plot(dominio_f, immagine_f, 'DisplayName', 'n cheb = 6');
+c.Color = "magenta";
+
+% ---------------------- n cheb = 8
+n = 8; % numero nodi
+nodi = cheb(a, b, n); % nodi cheb
+
+immagine_f = scheda6_es7_function(nodi, dominio_f);
+
+hold on
+c = plot(dominio_f, immagine_f, 'DisplayName', 'n cheb = 8');
+c.Color = "black";
+
+title('nodi cheb')
+l = legend;
+l.Location = "best";
+
+% -----
+function [immagine_f] = scheda6_es7_function(nodi, dominio_f)
+    immagine_f = ones(100, 1);
+    
+    [~, n] = size(nodi);
+    
+    for j = 1 : 100
+        for i = 1 : n
+            immagine_f(j,1) = immagine_f(j,1) * abs(dominio_f(j) - nodi(i));
+        end
+    end
+end
+% -----
+function [y] = cheb(a, b, n)
+    % n: grado
+    % a: estremo sx intervallo
+    % b: estremo dx intervallo
+    
+    y = [];
+    for i = 0 : n-1
+        arg_cos = (2 * i + 1) / (2 * n + 2) * pi;
+        tmp = (a + b) / 2 - (b - a) / 2 * cos(arg_cos);
+        y = [y tmp];
+    end
+end
