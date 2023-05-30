@@ -59,3 +59,31 @@ imm_coeff_minimi_quadrati_griglia = polyval(coeff_minimi_quadrati, dominio_grigl
 errore_ass_min_quadrati = norm(immagine_griglia - imm_coeff_minimi_quadrati_griglia, inf)
 % E' peggiore di quella di prima
 
+% Esercizio 6
+% integrale(f) = - cos(x)^2 + x + exp(x) ~= 2.25
+
+% Esercizio 7
+% coeff_f: coefficienti pol. interp. Lagrange
+
+m = 500; % sotto-intervalli
+
+x = linspace(a, b, m + 1);
+immagine_f = f(x);
+
+H = (b - a) / m;
+
+% Formula Cavalieri-Simpson composita
+q = immagine_f(1) + 2 * sum(immagine_f(2 : m)) + immagine_f(m + 1);
+q = q * H / 2
+
+q_lagrange = polyval(coeff_f, x(1)) + 2 * sum(polyval(coeff_f, x(2 : m))) + polyval(coeff_f, x(m + 1));
+q_lagrange = q_lagrange * H / 2
+
+errore_ass_integrazione_lagrange = norm(q - q_lagrange)
+
+% Esercizio 8
+% coeff_minimi_quadrati: coefficienti pol. ai minimi quadrati
+q_min_quadrati = polyval(coeff_minimi_quadrati, x(1)) + 2 * sum(polyval(coeff_minimi_quadrati, x(2 : m))) + polyval(coeff_minimi_quadrati, x(m + 1));
+q_min_quadrati = q_min_quadrati * H / 2
+
+errore_ass_integrazione_min_quad = norm(q - q_min_quadrati)
