@@ -73,8 +73,8 @@ immagine_f = f(x);
 H = (b - a) / m;
 
 % Formula Cavalieri-Simpson composita
-q = immagine_f(1) + 2 * sum(immagine_f(2 : m)) + immagine_f(m + 1);
-q = q * H / 2
+q = sum(f(x(1 : m)) + 4 * f((x(1 : m) + x(2 : m + 1)) / 2) + f(x(2 : m + 1)));
+q = q * H / 6
 
 q_lagrange = sum( polyval(coeff_f, x(1 : m)) + 4 * polyval(coeff_f, ((x(1 : m) + x(2 : m + 1)) / 2)) + polyval(coeff_f, x(2 : m + 1)) );
 q_lagrange = q_lagrange * H / 6
