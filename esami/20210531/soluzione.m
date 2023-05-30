@@ -76,14 +76,15 @@ H = (b - a) / m;
 q = immagine_f(1) + 2 * sum(immagine_f(2 : m)) + immagine_f(m + 1);
 q = q * H / 2
 
-q_lagrange = polyval(coeff_f, x(1)) + 2 * sum(polyval(coeff_f, x(2 : m))) + polyval(coeff_f, x(m + 1));
-q_lagrange = q_lagrange * H / 2
+q_lagrange = sum( polyval(coeff_f, x(1 : m)) + 4 * polyval(coeff_f, ((x(1 : m) + x(2 : m + 1)) / 2)) + polyval(coeff_f, x(2 : m + 1)) );
+q_lagrange = q_lagrange * H / 6
 
 errore_ass_integrazione_lagrange = norm(q - q_lagrange)
 
 % Esercizio 8
 % coeff_minimi_quadrati: coefficienti pol. ai minimi quadrati
-q_min_quadrati = polyval(coeff_minimi_quadrati, x(1)) + 2 * sum(polyval(coeff_minimi_quadrati, x(2 : m))) + polyval(coeff_minimi_quadrati, x(m + 1));
-q_min_quadrati = q_min_quadrati * H / 2
+
+q_min_quadrati = sum( polyval(coeff_minimi_quadrati, x(1 : m)) + 4 * polyval(coeff_minimi_quadrati, ((x(1 : m) + x(2 : m + 1)) / 2)) + polyval(coeff_minimi_quadrati, x(2 : m + 1)) );
+q_min_quadrati = q_min_quadrati * H / 6
 
 errore_ass_integrazione_min_quad = norm(q - q_min_quadrati)
